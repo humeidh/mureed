@@ -8,8 +8,8 @@
     <section class="hero">
         <div class="hero-content">
             <div class="hero-text">
-                <h1>Reserve Your Perfect Getaway</h1>
-                <p>Experience unparalleled comfort and hospitality at The Mureed - your home away from home.</p>
+                <h1>{{ $heroTitle }}</h1>
+                <p>{{ $heroSubtitle }}</p>
                 <div class="hero-buttons">
                     <a href="#" class="btn btn-primary" onclick="showBookingModal()">Book Now</a>
                     <a href="{{ url('/rooms') }}" class="btn btn-secondary">Explore Rooms</a>
@@ -50,6 +50,7 @@
     </section>
 
     <!-- Testimonial Carousel Section -->
+    @if($testimonials->count())
     <section class="testimonial">
         <div class="testimonial-content">
             <div style="margin-bottom: 2rem; opacity: 0.7;">
@@ -62,55 +63,27 @@
                 <button class="carousel-controls carousel-prev" onclick="changeTestimonial(-1)">‹</button>
                 <button class="carousel-controls carousel-next" onclick="changeTestimonial(1)">›</button>
 
-                <div class="testimonial-slide active">
-                    <p class="testimonial-text">"The Mureed was a hidden gem! The hospitality and attention to detail made our stay unforgettable. The staff went above and beyond to ensure our comfort."</p>
+                @foreach($testimonials as $i => $t)
+                <div class="testimonial-slide {{ $i === 0 ? 'active' : '' }}">
+                    <p class="testimonial-text">{{ $t->content }}</p>
                     <div class="testimonial-author">
-                        <div class="author-avatar" style="background: linear-gradient(45deg, #667eea, #764ba2);"></div>
-                        <div class="author-info"><h4>John Doe</h4><p>Travel Blogger</p></div>
+                        <div class="author-avatar" style="background: {{ $t->avatar_gradient ?? 'linear-gradient(45deg, #667eea, #764ba2)' }};"></div>
+                        <div class="author-info">
+                            <h4>{{ $t->guest_name }}</h4>
+                            <p>{{ $t->guest_title }}</p>
+                        </div>
                     </div>
                 </div>
-
-                <div class="testimonial-slide">
-                    <p class="testimonial-text">"Absolutely stunning location with pristine beaches and crystal-clear waters. The Ocean View Suite exceeded all our expectations. Perfect for our honeymoon!"</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar" style="background: linear-gradient(45deg, #f093fb, #f5576c);"></div>
-                        <div class="author-info"><h4>Sarah & Michael Johnson</h4><p>Honeymooners</p></div>
-                    </div>
-                </div>
-
-                <div class="testimonial-slide">
-                    <p class="testimonial-text">"The diving experiences at Fotteyo Kandu were incredible! Dr. Waheed's knowledge of marine life made every dive an educational adventure. Truly a diver's paradise."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar" style="background: linear-gradient(45deg, #4facfe, #00f2fe);"></div>
-                        <div class="author-info"><h4>David Chen</h4><p>Marine Photographer</p></div>
-                    </div>
-                </div>
-
-                <div class="testimonial-slide">
-                    <p class="testimonial-text">"Chef Hassan's culinary creations were outstanding! Every meal was a perfect blend of traditional Maldivian flavors and international cuisine. The sunset dinner was magical."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar" style="background: linear-gradient(45deg, #43e97b, #38f9d7);"></div>
-                        <div class="author-info"><h4>Isabella Rodriguez</h4><p>Food Critic</p></div>
-                    </div>
-                </div>
-
-                <div class="testimonial-slide">
-                    <p class="testimonial-text">"As a family, we were amazed by how The Mureed catered to everyone's needs. The kids loved the snorkeling, while we adults enjoyed the spa. Perfect family getaway!"</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar" style="background: linear-gradient(45deg, #fa709a, #fee140);"></div>
-                        <div class="author-info"><h4>The Williams Family</h4><p>Family Travelers</p></div>
-                    </div>
-                </div>
+                @endforeach
             </div>
 
             <div class="testimonial-nav">
-                <div class="nav-dot active" onclick="goToTestimonial(0)"></div>
-                <div class="nav-dot" onclick="goToTestimonial(1)"></div>
-                <div class="nav-dot" onclick="goToTestimonial(2)"></div>
-                <div class="nav-dot" onclick="goToTestimonial(3)"></div>
-                <div class="nav-dot" onclick="goToTestimonial(4)"></div>
+                @foreach($testimonials as $i => $t)
+                <div class="nav-dot {{ $i === 0 ? 'active' : '' }}" onclick="goToTestimonial({{ $i }})"></div>
+                @endforeach
             </div>
         </div>
     </section>
+    @endif
 </div>
 @endsection

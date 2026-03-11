@@ -1138,42 +1138,62 @@
 
     <!-- Booking Modal -->
     <div id="bookingModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; align-items: center; justify-content: center;">
-        <div style="background: white; padding: 3rem; border-radius: 15px; max-width: 500px; width: 90%; position: relative;">
+        <div style="background: white; padding: 3rem; border-radius: 15px; max-width: 560px; width: 90%; position: relative; max-height: 90vh; overflow-y: auto;">
             <span onclick="closeBookingModal()" style="position: absolute; top: 1rem; right: 1.5rem; font-size: 2rem; cursor: pointer; color: #666;">&times;</span>
             <h2 style="color: #1a365d; margin-bottom: 2rem; text-align: center;">Book Your Stay</h2>
-            <form>
-                <div style="margin-bottom: 1.5rem;">
-                    <label style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 600;">Check-in Date</label>
-                    <input type="date" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 5px; font-size: 1rem;">
-                </div>
-                <div style="margin-bottom: 1.5rem;">
-                    <label style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 600;">Check-out Date</label>
-                    <input type="date" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 5px; font-size: 1rem;">
+            <form id="bookingForm" action="{{ route('booking.store') }}" method="POST">
+                @csrf
+                <input type="hidden" name="room_id" id="booking_room_id">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+                    <div>
+                        <label style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 600;">Full Name *</label>
+                        <input type="text" name="guest_name" required style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 5px; font-size: 1rem;">
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 600;">Email *</label>
+                        <input type="email" name="email" required style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 5px; font-size: 1rem;">
+                    </div>
                 </div>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
                     <div>
-                        <label style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 600;">Adults</label>
-                        <select style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 5px; font-size: 1rem;">
-                            <option>1</option><option>2</option><option>3</option><option>4</option>
+                        <label style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 600;">Phone</label>
+                        <input type="tel" name="phone" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 5px; font-size: 1rem;">
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 600;">Nationality</label>
+                        <input type="text" name="nationality" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 5px; font-size: 1rem;">
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+                    <div>
+                        <label style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 600;">Check-in Date *</label>
+                        <input type="date" name="check_in" required id="checkin_date" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 5px; font-size: 1rem;">
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 600;">Check-out Date *</label>
+                        <input type="date" name="check_out" required id="checkout_date" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 5px; font-size: 1rem;">
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+                    <div>
+                        <label style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 600;">Adults *</label>
+                        <select name="adults" required style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 5px; font-size: 1rem;">
+                            <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5+</option>
                         </select>
                     </div>
                     <div>
                         <label style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 600;">Children</label>
-                        <select style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 5px; font-size: 1rem;">
-                            <option>0</option><option>1</option><option>2</option><option>3</option>
+                        <select name="children" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 5px; font-size: 1rem;">
+                            <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option>
                         </select>
                     </div>
                 </div>
-                <div style="margin-bottom: 2rem;">
-                    <label style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 600;">Room Type</label>
-                    <select style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 5px; font-size: 1rem;">
-                        <option>Garden Room - $199/night</option>
-                        <option>Ocean View Suite - $299/night</option>
-                        <option>Beach Villa - $499/night</option>
-                        <option>Presidential Suite - $799/night</option>
-                    </select>
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; color: #333; font-weight: 600;">Special Requests</label>
+                    <textarea name="special_requests" rows="3" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 5px; font-size: 1rem; resize: vertical;" placeholder="Any special requirements or requests..."></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem;" onclick="submitBooking(event)">Complete Booking</button>
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem;">Send Booking Inquiry</button>
+                <p style="text-align:center; color:#888; font-size:0.85rem; margin-top:1rem;">Our team will confirm availability within 4 hours.</p>
             </form>
         </div>
     </div>
@@ -1307,27 +1327,22 @@
                 else $(this).css('border-color', '#38a169');
             });
 
-            // Contact form
-            $('#contactForm').submit(function(e) {
-                e.preventDefault();
-                var name = $('#name').val(), email = $('#email').val(), message = $('#message').val();
-                if (name && email && message) {
-                    alert('Thank you ' + name + '! Your message has been sent. We will get back to you within 4 hours during office hours.');
-                    $('#contactForm')[0].reset();
-                } else {
-                    alert('Please fill in all required fields.');
-                }
+            // Set minimum date for check-in/checkout
+            var today = new Date().toISOString().split('T')[0];
+            $('#checkin_date').attr('min', today);
+            $('#checkin_date').on('change', function() {
+                var nextDay = new Date($(this).val());
+                nextDay.setDate(nextDay.getDate() + 1);
+                $('#checkout_date').attr('min', nextDay.toISOString().split('T')[0]);
             });
         });
 
         // Booking modal
-        function showBookingModal() { $('#bookingModal').css('display', 'flex').hide().fadeIn(300); }
-        function closeBookingModal() { $('#bookingModal').fadeOut(300); }
-        function submitBooking(event) {
-            event.preventDefault();
-            alert('Thank you for your booking request! Our team will contact you shortly to confirm your reservation.');
-            closeBookingModal();
+        function showBookingModal(roomId, roomName) {
+            if (roomId) $('#booking_room_id').val(roomId);
+            $('#bookingModal').css('display', 'flex').hide().fadeIn(300);
         }
+        function closeBookingModal() { $('#bookingModal').fadeOut(300); }
 
         // Gallery modal
         let currentGallerySlide = 0, totalGallerySlides = 5;

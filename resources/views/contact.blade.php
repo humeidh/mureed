@@ -68,9 +68,17 @@
 <div style="background: #f8f9fa; padding: 4rem 2rem; margin-top: 4rem;">
     <div class="content-section">
         <h2 class="section-title">Send us a Message</h2>
+
+        @if(session('contact_success'))
+        <div style="background: #c6f6d5; border: 1px solid #38a169; color: #276749; padding: 1.25rem 2rem; margin-bottom: 2rem; border-radius: 10px; text-align: center; font-weight: 600; max-width: 800px; margin: 0 auto 2rem;">
+            {{ session('contact_success') }}
+        </div>
+        @endif
+
         <div style="max-width: 800px; margin: 0 auto;">
             <div class="contact-form" style="background: white; padding: 3rem; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.1);">
-                <form id="contactForm">
+                <form id="contactForm" action="{{ route('contact.store') }}" method="POST">
+                @csrf
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
                         <div class="form-group">
                             <label for="name">Full Name *</label>
