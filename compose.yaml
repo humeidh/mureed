@@ -1,3 +1,4 @@
+name: themureed
 services:
     laravel.test:
         build:
