@@ -50,7 +50,6 @@ $ARTISAN storage:link --force 2>/dev/null || true
 # --- 7. Fix permissions ---
 echo "==> Setting permissions"
 chmod -R 775 storage bootstrap/cache
-chown -R deployer:www-data storage bootstrap/cache
 
 # --- 8. Reload PHP-FPM gracefully ---
 echo "==> Reloading PHP-FPM"
