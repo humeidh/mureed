@@ -35,7 +35,8 @@ class BlogPostResource extends Resource
                     ->rows(3)->maxLength(500)
                     ->helperText('Short summary shown on the blog listing page'),
                 Forms\Components\RichEditor::make('content')
-                    ->required()->columnSpanFull(),
+                    ->required()->columnSpanFull()
+                    ->extraAttributes(['style' => 'min-height: 300px;']),
             ])->columns(2),
 
             Forms\Components\Section::make('SEO & Media')->schema([
