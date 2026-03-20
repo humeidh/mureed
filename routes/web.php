@@ -51,7 +51,7 @@ Route::get('/gallery', function () {
 
 Route::get('/about', function () {
     return view('about', [
-        'sections'    => AboutSection::where('is_active', true)->orderBy('sort_order')->keyBy('section_key'),
+        'sections'    => AboutSection::where('is_active', true)->orderBy('sort_order')->get()->keyBy('section_key'),
         'attractions' => Attraction::where('is_active', true)->orderBy('sort_order')->get(),
         'team'        => TeamMember::where('is_active', true)->orderBy('sort_order')->get(),
         'philosophy'  => SiteSetting::get('philosophy_text'),
