@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('title', 'Our Rooms - The Mureed')
+@section('meta_description', 'Explore luxury rooms and suites at The Mureed resort. From Ocean View Suites to Presidential Suites, discover comfort and elegance in the Maldives.')
+@section('og_title', 'Our Rooms - The Mureed')
+@section('og_description', 'Explore luxury rooms and suites at The Mureed resort in the Maldives. Ocean views, private pools, and world-class amenities.')
 
 @section('content')
 <div class="page-header">

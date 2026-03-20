@@ -33,7 +33,15 @@ class SiteSettingResource extends Resource
             Forms\Components\Textarea::make('value')
                 ->rows(4)
                 ->columnSpanFull()
-                ->visible(fn (Forms\Get $get) => in_array($get('type'), ['text', 'textarea', 'image', null])),
+                ->visible(fn (Forms\Get $get) => in_array($get('type'), ['text', 'textarea', null])),
+            Forms\Components\FileUpload::make('value')
+                ->label('Image')
+                ->image()
+                ->directory('site-settings')
+                ->maxSize(5120)
+                ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                ->columnSpanFull()
+                ->visible(fn (Forms\Get $get) => $get('type') === 'image'),
         ])->columns(2);
     }
 

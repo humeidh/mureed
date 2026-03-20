@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\AboutSection;
 use App\Models\Amenity;
 use App\Models\Attraction;
 use App\Models\FooterSetting;
@@ -143,10 +144,25 @@ class DatabaseSeeder extends Seeder
             TeamMember::updateOrCreate(['name' => $member['name']], $member + ['is_active' => true]);
         }
 
+        // About sections
+        $aboutSections = [
+            [
+                'section_key' => 'story',
+                'title' => 'The Story of The Mureed',
+                'content' => "<h3>From Dream to Paradise</h3>\n<p>The Mureed's journey began in 2015 when Ahmed Mureed, a passionate local entrepreneur and marine biologist, returned to his ancestral home of Fulidhoo Island after years of working in luxury resorts across the Maldives.</p>\n<p>What started as a small family-run guesthouse with just three rooms has blossomed into an award-winning boutique resort, welcoming guests from over 50 countries.</p>",
+                'sort_order' => 1,
+                'is_active' => true,
+            ],
+        ];
+        foreach ($aboutSections as $section) {
+            AboutSection::updateOrCreate(['section_key' => $section['section_key']], $section);
+        }
+
         // Site settings
         $siteSettings = [
             ['key' => 'hero_title',       'value' => 'Reserve Your Perfect Getaway',     'type' => 'text'],
             ['key' => 'hero_subtitle',    'value' => 'Experience unparalleled comfort and hospitality at The Mureed - your home away from home.', 'type' => 'textarea'],
+            ['key' => 'hero_image',       'value' => null,                                 'type' => 'image'],
             ['key' => 'philosophy_title', 'value' => 'Our Philosophy',                    'type' => 'text'],
             ['key' => 'philosophy_text',  'value' => 'At The Mureed, we believe luxury is not just about opulence — it is about authentic connection, environmental harmony, and creating moments that last a lifetime.', 'type' => 'textarea'],
             ['key' => 'mission',          'value' => 'To provide an extraordinary island escape that seamlessly blends Maldivian culture with world-class hospitality, creating memories that inspire guests to return time and again.', 'type' => 'textarea'],
@@ -158,15 +174,18 @@ class DatabaseSeeder extends Seeder
 
         // Footer settings
         $footerSettings = [
-            ['key' => 'phone_1',         'value' => '+960 765-4321',              'type' => 'text'],
-            ['key' => 'phone_2',         'value' => '+960 987-6543',              'type' => 'text'],
-            ['key' => 'email_info',      'value' => 'info@themureed.com',         'type' => 'text'],
-            ['key' => 'email_bookings',  'value' => 'reservations@themureed.com', 'type' => 'text'],
-            ['key' => 'address',         'value' => "Fulidhoo Island\nVaavu Atoll\nRepublic of Maldives", 'type' => 'textarea'],
-            ['key' => 'facebook_url',    'value' => '#',                           'type' => 'url'],
-            ['key' => 'instagram_url',   'value' => '#',                           'type' => 'url'],
-            ['key' => 'tripadvisor_url', 'value' => '#',                           'type' => 'url'],
-            ['key' => 'office_hours',    'value' => 'Daily: 6:00 AM - 10:00 PM MVT', 'type' => 'text'],
+            ['key' => 'contact_phone_1',  'value' => '+960 765-4321',              'type' => 'text'],
+            ['key' => 'contact_phone_2',  'value' => '+960 987-6543',              'type' => 'text'],
+            ['key' => 'contact_email_1',  'value' => 'info@themureed.com',         'type' => 'text'],
+            ['key' => 'contact_email_2',  'value' => 'reservations@themureed.com', 'type' => 'text'],
+            ['key' => 'contact_address',  'value' => "Fulidhoo Island\nVaavu Atoll\nRepublic of Maldives", 'type' => 'textarea'],
+            ['key' => 'social_facebook',  'value' => '#',                           'type' => 'url'],
+            ['key' => 'social_instagram', 'value' => '#',                           'type' => 'url'],
+            ['key' => 'social_twitter',   'value' => '#',                           'type' => 'url'],
+            ['key' => 'social_linkedin',  'value' => '#',                           'type' => 'url'],
+            ['key' => 'social_youtube',   'value' => '#',                           'type' => 'url'],
+            ['key' => 'social_tripadvisor','value' => '#',                          'type' => 'url'],
+            ['key' => 'office_hours',     'value' => 'Daily: 6:00 AM - 10:00 PM MVT', 'type' => 'text'],
         ];
         foreach ($footerSettings as $s) {
             FooterSetting::updateOrCreate(['key' => $s['key']], $s);
