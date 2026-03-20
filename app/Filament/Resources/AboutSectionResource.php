@@ -26,7 +26,8 @@ class AboutSectionResource extends Resource
                 ->helperText('e.g. story, philosophy, mission, vision'),
             Forms\Components\TextInput::make('title')->required()->maxLength(255),
             Forms\Components\RichEditor::make('content')
-                ->required()->columnSpanFull(),
+                ->required()->columnSpanFull()
+                ->extraAttributes(['style' => 'min-height: 300px;']),
             Forms\Components\FileUpload::make('image_path')
                 ->label('Image')
                 ->image()
