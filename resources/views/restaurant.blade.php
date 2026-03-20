@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('title', 'Restaurant Menu - The Mureed')
+@section('meta_description', 'Savor culinary delights at The Mureed restaurant. Fresh Maldivian cuisine, international dishes, and chef specials crafted with the finest local ingredients.')
+@section('og_title', 'Restaurant Menu - The Mureed')
+@section('og_description', 'Fresh Maldivian cuisine and international dishes at The Mureed resort restaurant.')
 
 @section('content')
 <div class="page-header">

@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('title', 'About Us - The Mureed')
+@section('meta_description', 'Discover the story of The Mureed resort on Fulidhoo Island, Maldives. Learn about our philosophy, mission, team, and commitment to sustainable luxury tourism.')
+@section('og_title', 'About Us - The Mureed')
+@section('og_description', 'Discover the story, philosophy, and team behind The Mureed resort in the Maldives.')
 
 @section('content')
 <div class="page-header">
@@ -101,7 +104,7 @@
             @foreach($team as $member)
             <div class="team-member">
                 @if($member->photo_path)
-                <img src="{{ asset('storage/' . $member->photo_path) }}" alt="{{ $member->name }}" class="team-photo" style="object-fit: cover;">
+                <img src="{{ asset('storage/' . $member->photo_path) }}" alt="{{ $member->name }}" class="team-photo" style="object-fit: cover;" loading="lazy">
                 @else
                 <div class="team-photo" style="background: {{ $member->gradient_style ?? 'linear-gradient(45deg, #667eea, #764ba2)' }}; display:flex; align-items:center; justify-content:center; font-size: 2rem;">👤</div>
                 @endif

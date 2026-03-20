@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Premium Amenities - The Mureed')
+@section('meta_description', 'Discover premium amenities at The Mureed resort. Infinity pool, luxury spa, water sports, fitness center, and more on Fulidhoo Island, Maldives.')
 
 @section('content')
 <div class="page-header">

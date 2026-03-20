@@ -5,9 +5,11 @@ use App\Filament\Resources\TestimonialResource\Pages;
 use App\Models\Testimonial;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Http;
 
 class TestimonialResource extends Resource
 {
@@ -33,7 +35,51 @@ class TestimonialResource extends Resource
                 ->required()->rows(5)->columnSpanFull(),
             Forms\Components\TextInput::make('source_url')
                 ->label('Source URL (TripAdvisor / Google / Booking.com)')
-                ->url()->maxLength(500),
+                ->url()->maxLength(500)
+                ->suffixAction(
+                    Forms\Components\Actions\Action::make('importFromUrl')
+                        ->icon('heroicon-o-arrow-down-tray')
+                        ->tooltip('Import review from URL')
+                        ->action(function (Forms\Get $get, Forms\Set $set) {
+                            $url = $get('source_url');
+                            if (! $url) {
+                                Notification::make()->title('Please enter a URL first')->warning()->send();
+                                return;
+                            }
+
+                            try {
+                                $response = Http::timeout(10)->withHeaders([
+                                    'User-Agent' => 'Mozilla/5.0 (compatible)',
+                                ])->get($url);
+
+                                if (! $response->successful()) {
+                                    Notification::make()->title('Could not fetch the URL. Please fill in the fields manually.')->warning()->send();
+                                    return;
+                                }
+
+                                $html = $response->body();
+
+                                // Try to extract review content from meta tags or common patterns
+                                if (preg_match('/<meta[^>]+property=["\']og:title["\'][^>]+content=["\']([^"\']+)["\']/', $html, $m)) {
+                                    $set('guest_name', html_entity_decode($m[1]));
+                                }
+                                if (preg_match('/<meta[^>]+property=["\']og:description["\'][^>]+content=["\']([^"\']+)["\']/', $html, $m)) {
+                                    $set('content', html_entity_decode($m[1]));
+                                }
+
+                                Notification::make()
+                                    ->title('Import attempted! Please review and complete any missing fields manually.')
+                                    ->info()
+                                    ->send();
+                            } catch (\Exception $e) {
+                                Notification::make()
+                                    ->title('Import failed. Please fill in the fields manually.')
+                                    ->body('The URL could not be reached or parsed.')
+                                    ->warning()
+                                    ->send();
+                            }
+                        })
+                ),
             Forms\Components\TextInput::make('sort_order')->numeric()->default(0),
             Forms\Components\Toggle::make('is_published')->default(true),
         ])->columns(2);
