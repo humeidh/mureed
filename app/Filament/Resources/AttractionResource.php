@@ -21,6 +21,13 @@ class AttractionResource extends Resource
         return $form->schema([
             Forms\Components\TextInput::make('name')->required()->maxLength(255),
             Forms\Components\TextInput::make('icon')->label('Icon (emoji)')->maxLength(10),
+            Forms\Components\FileUpload::make('image')
+                ->label('Image')
+                ->image()
+                ->directory('attractions')
+                ->visibility('public')
+                ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                ->maxSize(5120),
             Forms\Components\TextInput::make('gradient_style')->label('CSS Gradient Style')->maxLength(255),
             Forms\Components\TextInput::make('sort_order')->numeric()->default(0),
             Forms\Components\Textarea::make('description')->rows(4)->columnSpanFull(),

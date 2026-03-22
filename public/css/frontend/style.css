@@ -1202,6 +1202,8 @@ body {
     .carousel-prev { left: 10px; }
     .carousel-next { right: 10px; }
 
+    .room-features { grid-template-columns: 1fr; }
+
     .contact-grid,
     .about-content,
     .mission-vision,
