@@ -83,8 +83,14 @@
         <div class="attractions-grid">
             @foreach($attractions as $attraction)
             <div class="attraction-card">
-                <div class="attraction-image" style="background: {{ $attraction->gradient_style ?? 'linear-gradient(45deg, #4facfe, #00f2fe)' }};">
-                    {{ $attraction->icon ?? '🌊' }}
+                <div class="attraction-image">
+                    @if($attraction->image)
+                    <img src="{{ asset('storage/' . $attraction->image) }}" alt="{{ $attraction->name }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+                    @else
+                    <div style="width:100%;height:100%;background:{{ $attraction->gradient_style ?? 'linear-gradient(45deg, #4facfe, #00f2fe)' }};display:flex;align-items:center;justify-content:center;font-size:2.5rem;">
+                        {{ $attraction->icon ?? '🌊' }}
+                    </div>
+                    @endif
                 </div>
                 <div class="attraction-content">
                     <h4>{{ $attraction->name }}</h4>

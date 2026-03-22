@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 class Attraction extends Model
 {
     protected $fillable = [
-        'name', 'description', 'icon', 'gradient_style', 'sort_order', 'is_active',
+        'name', 'description', 'icon', 'image', 'gradient_style', 'sort_order', 'is_active',
     ];
 
     protected $casts = [
