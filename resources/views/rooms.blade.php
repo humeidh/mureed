@@ -21,8 +21,14 @@
     <div class="rooms-grid">
         @forelse($rooms as $room)
         <div class="room-card">
-            <div class="room-image" style="background: {{ $room->gradient_style ?? 'linear-gradient(45deg, #667eea, #764ba2)' }};">
-                {{ $room->icon ?? '🏨' }}
+            <div class="room-image">
+                @if($room->images->count())
+                <img src="{{ asset('storage/' . $room->images->first()->image_path) }}" alt="{{ $room->name }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+                @else
+                <div style="width:100%;height:100%;background:{{ $room->gradient_style ?? 'linear-gradient(45deg, #667eea, #764ba2)' }};display:flex;align-items:center;justify-content:center;font-size:3rem;">
+                    {{ $room->icon ?? '🏨' }}
+                </div>
+                @endif
             </div>
             <div class="room-content">
                 <div class="room-header">
