@@ -22,6 +22,7 @@ Route::get('/', function () {
         'heroTitle'    => SiteSetting::get('hero_title', 'Reserve Your Perfect Getaway'),
         'heroSubtitle' => SiteSetting::get('hero_subtitle', 'Experience unparalleled comfort and hospitality at The Mureed.'),
         'heroImage'    => SiteSetting::get('hero_image'),
+        'heroSmall'    => SiteSetting::get('hero_small'),
     ]);
 });
 
