@@ -19,7 +19,11 @@
                 </div>
             </div>
             <div class="hero-image">
-                <div class="beach-scene"></div>
+                @if($heroSmall)
+                    <div class="beach-scene" style="background: url('{{ asset('storage/' . $heroSmall) }}') no-repeat center; background-size: cover;"></div>
+                @else
+                    <div class="beach-scene"></div>
+                @endif
             </div>
         </div>
     </section>

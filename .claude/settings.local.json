@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(docker exec:*)"
+      "Bash(docker exec:*)",
+      "PowerShell(php artisan tinker --execute=\"App\\\\Models\\\\SiteSetting::updateOrCreate\\(['key' => 'hero_small'], ['value' => null, 'type' => 'image']\\); echo 'done';\")"
     ]
   }
 }

@@ -163,6 +163,7 @@ class DatabaseSeeder extends Seeder
             ['key' => 'hero_title',       'value' => 'Reserve Your Perfect Getaway',     'type' => 'text'],
             ['key' => 'hero_subtitle',    'value' => 'Experience unparalleled comfort and hospitality at The Mureed - your home away from home.', 'type' => 'textarea'],
             ['key' => 'hero_image',       'value' => null,                                 'type' => 'image'],
+            ['key' => 'hero_small',       'value' => null,                                 'type' => 'image'],
             ['key' => 'philosophy_title', 'value' => 'Our Philosophy',                    'type' => 'text'],
             ['key' => 'philosophy_text',  'value' => 'At The Mureed, we believe luxury is not just about opulence — it is about authentic connection, environmental harmony, and creating moments that last a lifetime.', 'type' => 'textarea'],
             ['key' => 'mission',          'value' => 'To provide an extraordinary island escape that seamlessly blends Maldivian culture with world-class hospitality, creating memories that inspire guests to return time and again.', 'type' => 'textarea'],
