@@ -218,10 +218,10 @@
     <div class="content">
         <div class="mark" aria-hidden="true">M</div>
         <p class="eyebrow">Under Maintenance</p>
-        <h1>We're tidying up the island</h1>
+        <h1>We're tidying up our island home's website</h1>
         <p class="lede">
-            The Mureed is closed to visitors for a little while as we polish a few things behind the scenes.
-            We'll have the doors open again shortly &mdash; thank you for your patience.
+            The Mureed's website is closed to visitors for a little while as we polish a few things behind the scenes.
+            We'll have our doors open again shortly &mdash; thank you for your patience. In the meantime you can contact us for booking and inquiries below.
         </p>
         <a class="cta" href="mailto:info@themureed.com">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 6 12 13 2 6"/><path d="M2 6h20v12H2z"/></svg>
@@ -236,25 +236,6 @@
             @endif
             <div class="location">Fulidhoo Island &middot; Vaavu Atoll &middot; Maldives</div>
         </div>
-    </div>
-
-    <div class="horizon" aria-hidden="true">
-        <svg viewBox="0 0 900 300" preserveAspectRatio="none">
-            <circle class="sun" cx="450" cy="120" r="46" fill="#f4efe2" opacity="0.92"/>
-            <g class="wave-back" fill="#24334a" opacity="0.65">
-                <path d="M0,190 Q75,170 150,190 T300,190 T450,190 T600,190 T750,190 T900,190 T1050,190 T1200,190 T1350,190 V300 H0 Z"/>
-                <path d="M1200,190 Q1275,170 1350,190 T1500,190 T1650,190 T1800,190 T1950,190 T2100,190 T2250,190 T2400,190 T2550,190 V300 H1200 Z" transform="translate(-900,0)"/>
-            </g>
-            <g class="wave-front" fill="#182842">
-                <path d="M0,225 Q75,200 150,225 T300,225 T450,225 T600,225 T750,225 T900,225 T1050,225 T1200,225 T1350,225 V300 H0 Z"/>
-                <path d="M1200,225 Q1275,200 1350,225 T1500,225 T1650,225 T1800,225 T1950,225 T2100,225 T2250,225 T2400,225 T2550,225 V300 H1200 Z" transform="translate(-900,0)"/>
-            </g>
-            <g transform="translate(640,205)" opacity="0.9">
-                <path d="M-26,10 L26,10 L15,20 L-15,20 Z" fill="#182842"/>
-                <path d="M0,-28 L0,10 L20,10 Z" fill="#2d3748"/>
-                <line x1="0" y1="-28" x2="0" y2="10" stroke="#0f1d33" stroke-width="1.5"/>
-            </g>
-        </svg>
     </div>
 
 </body>
