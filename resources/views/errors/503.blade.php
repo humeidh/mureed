@@ -229,7 +229,10 @@
         </a>
         <div class="status">
             @php
-                $retryAfter = method_exists($exception ?? null, 'getHeaders') ? ($exception->getHeaders()['Retry-After'] ?? null) : null;
+                $retryAfter = null;
+                if (isset($exception) && is_object($exception) && method_exists($exception, 'getHeaders')) {
+                    $retryAfter = $exception->getHeaders()['Retry-After'] ?? null;
+                }
             @endphp
             @if ($retryAfter)
                 <div><strong>Estimated return:</strong> within {{ max(1, (int) ceil($retryAfter / 60)) }} minute{{ ceil($retryAfter / 60) == 1 ? '' : 's' }}</div>
