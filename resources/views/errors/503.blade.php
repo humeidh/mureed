@@ -218,7 +218,7 @@
     <div class="content">
         <div class="mark" aria-hidden="true">M</div>
         <p class="eyebrow">Under Maintenance</p>
-        <h1>We're tidying up our island home website</h1>
+        <h1>We're tidying up our island home's website</h1>
         <p class="lede">
             The Mureed's website is closed to visitors for a little while as we polish a few things behind the scenes.
             We'll have our doors open again shortly &mdash; thank you for your patience. In the meantime you can contact us for booking and inquiries below.
