@@ -2,7 +2,14 @@
   "permissions": {
     "allow": [
       "Bash(docker exec:*)",
-      "PowerShell(php artisan tinker --execute=\"App\\\\Models\\\\SiteSetting::updateOrCreate\\(['key' => 'hero_small'], ['value' => null, 'type' => 'image']\\); echo 'done';\")"
+      "PowerShell(php artisan tinker --execute=\"App\\\\Models\\\\SiteSetting::updateOrCreate\\(['key' => 'hero_small'], ['value' => null, 'type' => 'image']\\); echo 'done';\")",
+      "Bash(ls -la ~/.ssh/ 2>&1)",
+      "Read(//c/Users/Dell/.ssh/**)",
+      "Bash(ssh-keygen -t ed25519 -C \"a.humeidh@gmail.com \\(themureed local\\)\" -f ~/.ssh/id_ed25519_github -N \"\")",
+      "Bash(ssh -T git@github.com)",
+      "Bash(ssh-keyscan -t ed25519 github.com)",
+      "Bash(git remote *)",
+      "Bash(git push *)"
     ]
   }
 }
