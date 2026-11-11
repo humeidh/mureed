@@ -66,7 +66,7 @@ Route::get('/about', function () {
 
 Route::get('/contact', function () {
     return view('contact', [
-        'phone1'     => FooterSetting::get('contact_phone_1', '+960 765-4321'),
+        'phone1'     => FooterSetting::get('contact_phone_1', '+960 734-3400'),
         'phone2'     => FooterSetting::get('contact_phone_2', '+960 987-6543'),
         'email1'     => FooterSetting::get('contact_email_1', 'info@themureed.com'),
         'email2'     => FooterSetting::get('contact_email_2', 'reservations@themureed.com'),

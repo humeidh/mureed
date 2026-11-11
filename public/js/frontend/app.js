@@ -143,7 +143,7 @@ function submitReservation(event) {
 }
 
 function callRestaurant() {
-    alert('Calling The Mureed Restaurant at +960 765-4321...\n\nOur team is available daily from 6:00 AM to 10:00 PM.');
+    alert('Calling The Mureed Restaurant at +960 734-3400...\n\nOur team is available daily from 6:00 AM to 10:00 PM.');
 }
 
 // Room gallery

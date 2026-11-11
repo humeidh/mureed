@@ -110,7 +110,7 @@
         <p>Experience culinary excellence in our beautiful oceanfront restaurant. Book your table now for an unforgettable dining experience.</p>
         <div class="cta-buttons">
             <button class="cta-btn cta-btn-primary" onclick="showReservationModal()">Make Reservation</button>
-            <button class="cta-btn cta-btn-secondary" onclick="callRestaurant()">Call to Book: +960 765-4321</button>
+            <button class="cta-btn cta-btn-secondary" onclick="callRestaurant()">Call to Book: +960 734-3400</button>
         </div>
     </div>
 </div>
