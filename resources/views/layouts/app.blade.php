@@ -237,7 +237,7 @@
                         $footerTwitter = \App\Models\FooterSetting::get('social_twitter', '#');
                         $footerLinkedin = \App\Models\FooterSetting::get('social_linkedin', '#');
                         $footerYoutube = \App\Models\FooterSetting::get('social_youtube', '#');
-                        $footerPhone = \App\Models\FooterSetting::get('contact_phone_1', '+960 765-4321');
+                        $footerPhone = \App\Models\FooterSetting::get('contact_phone_1', '+960 734-3400');
                         $footerEmail = \App\Models\FooterSetting::get('contact_email_1', 'info@themureed.com');
                         $footerAddress = \App\Models\FooterSetting::get('contact_address', "Fulidhoo Island\nVaavu Atoll\nRepublic of Maldives");
                     @endphp

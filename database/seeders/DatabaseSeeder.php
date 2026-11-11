@@ -175,7 +175,7 @@ class DatabaseSeeder extends Seeder
 
         // Footer settings
         $footerSettings = [
-            ['key' => 'contact_phone_1',  'value' => '+960 765-4321',              'type' => 'text'],
+            ['key' => 'contact_phone_1',  'value' => '+960 734-3400',              'type' => 'text'],
             ['key' => 'contact_phone_2',  'value' => '+960 987-6543',              'type' => 'text'],
             ['key' => 'contact_email_1',  'value' => 'info@themureed.com',         'type' => 'text'],
             ['key' => 'contact_email_2',  'value' => 'reservations@themureed.com', 'type' => 'text'],

@@ -106,7 +106,7 @@
     "name": "The Mureed",
     "description": "A luxury boutique resort on Fulidhoo Island, Vaavu Atoll, Maldives offering pristine beaches, world-class dining, and authentic Maldivian hospitality.",
     "url": "{{ url('/') }}",
-    "telephone": "{{ \App\Models\FooterSetting::get('contact_phone_1', '+960 765-4321') }}",
+    "telephone": "{{ \App\Models\FooterSetting::get('contact_phone_1', '+960 734-3400') }}",
     "email": "{{ \App\Models\FooterSetting::get('contact_email_1', 'info@themureed.com') }}",
     "address": {
         "@@type": "PostalAddress",
