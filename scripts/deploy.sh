@@ -14,7 +14,10 @@ cd "$APP_DIR"
 
 # --- 1. Maintenance mode ON ---
 echo "==> Enabling maintenance mode"
-$ARTISAN down --retry=30 --render="errors::503"
+if ! $ARTISAN down --retry=30 --render="errors::503"; then
+    echo "==> Custom 503 page failed to render; using Laravel's default maintenance page"
+    $ARTISAN down --retry=30
+fi
 
 # Lift maintenance mode on any failure
 trap '$ARTISAN up; echo "==> Maintenance mode lifted (trap)"' EXIT

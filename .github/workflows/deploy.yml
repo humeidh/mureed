@@ -125,7 +125,9 @@ jobs:
             public/build/ \
             ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/var/www/themureed/public/build/
 
+      # Refresh the deploy script and error views before running them, so a
+      # broken copy already on the server can't block the deploy that fixes it.
       - name: Run deploy script on VPS
         run: |
           ssh -p ${{ secrets.VPS_PORT }} ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} \
-            "bash /var/www/themureed/scripts/deploy.sh 2>&1"
+            "cd /var/www/themureed && git fetch origin main && git checkout origin/main -- scripts/deploy.sh resources/views/errors && bash scripts/deploy.sh 2>&1"
