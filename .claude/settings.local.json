@@ -9,7 +9,17 @@
       "Bash(ssh -T git@github.com)",
       "Bash(ssh-keyscan -t ed25519 github.com)",
       "Bash(git remote *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(wsl -d Ubuntu-22.04 -- bash -lc \"docker --version && echo OK_DOCKER; curl --version | head -1; echo OK_CURL\")",
+      "Bash(wsl -d Ubuntu-22.04 -- bash -lc \"cd /mnt/c/Users/Dell/Projects && curl -s 'https://laravel.build/mureed-ims' | bash\")",
+      "Bash(wsl -d Ubuntu-22.04 -- bash -lc \"ls -la /mnt/c/Users/Dell/Projects/mureed-ims | head -30; echo ---; cat /mnt/c/Users/Dell/Projects/mureed-ims/composer.json 2>&1 | head -40\")",
+      "Bash(wsl -d Ubuntu-22.04 -- bash -lc \"id humeidh\")",
+      "Bash(wsl -d Ubuntu-22.04 -- bash -lc \"docker run --rm -v /mnt/c/Users/Dell/Projects/mureed-ims:/var/www/html -w /var/www/html laravelsail/php84-composer:latest chown -R 1000:1000 . && ls -la /mnt/c/Users/Dell/Projects/mureed-ims | head -10\")",
+      "Bash(wsl -d Ubuntu-22.04 -- bash -lc \"cd /mnt/c/Users/Dell/Projects/mureed-ims && docker run --rm -v \\\\$\\(pwd\\):/var/www/html -w /var/www/html laravelsail/php84-composer:latest composer require laravel/sail --dev\")",
+      "Bash(wsl -d Ubuntu-22.04 -- bash -lc \"cd /mnt/c/Users/Dell/Projects/mureed-ims && grep -iE 'filament|medialibrary' composer.lock | head -10; echo '---count names---'; grep -c '\\\\\"name\\\\\":' composer.lock\")",
+      "Bash(wsl -d Ubuntu-22.04 -- bash -lc \"cd /mnt/c/Users/Dell/Projects/mureed-ims && python3 -c \\\\\"import json; d=json.load\\(open\\('composer.lock'\\)\\); print\\('packages:', len\\(d.get\\('packages',[]\\)\\)\\); print\\('packages-dev:', len\\(d.get\\('packages-dev',[]\\)\\)\\); print\\([p['name'] for p in d.get\\('packages',[]\\)][:20]\\)\\\\\" 2>&1 || grep -o '\\\\\"name\\\\\": \\\\\"[^\\\\\"]*\\\\\"' composer.lock | sort -u | head -40\")",
+      "Bash(wsl -d Ubuntu-22.04 -- bash -lc \"cd /mnt/c/Users/Dell/Projects/mureed-ims && pwd && docker run --rm -v \\\\$\\(pwd\\):/var/www/html -w /var/www/html laravelsail/php84-composer:latest cat composer.json\")",
+      "Bash(wsl -d Ubuntu-22.04 -- bash -lc \"cd /mnt/c/Users/Dell/Projects/mureed-ims && docker run --rm -v /mnt/c/Users/Dell/Projects/mureed-ims:/var/www/html -w /var/www/html laravelsail/php84-composer:latest composer require laravel/sail --dev\")"
     ]
   }
 }
