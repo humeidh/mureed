@@ -690,6 +690,7 @@
             <div class="footer">
                 <span>&copy; <span id="year"></span> The Mureed Guesthouse</span>
                 <span>Fulidhoo &middot; Vaavu Atoll &middot; Maldives</span>
+                <span>Managed by &middot; Adventus-co</span>
             </div>
         </div>
     </main>
